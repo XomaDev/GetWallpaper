@@ -11,8 +11,10 @@ import com.google.appinventor.components.runtime.AndroidNonvisibleComponent;
 import com.google.appinventor.components.runtime.AndroidViewComponent;
 import com.google.appinventor.components.runtime.ComponentContainer;
 import com.google.appinventor.components.runtime.EventDispatcher;
+import com.google.appinventor.components.annotations.UsesPermissions;
 
-//External
+//External imports
+
 import java.io.FileOutputStream;
 import android.graphics.Bitmap;
 import android.app.WallpaperManager;
@@ -20,8 +22,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import java.io.IOException;
+import android.os.Bundle ;
+import android.support.v7.app.AppCompatActivity ;
 
-@DesignerComponent(version = 1,
+@UsesPermissions(permissionNames = "android.permission.WRITE_EXTERNAL_STORAGE")
+@DesignerComponent(version = 2,
         category = ComponentCategory.EXTENSION,
         description = "Save the wallpaper of the home screen, made my Kumaraswamy",
         nonVisible = true,
@@ -58,7 +63,3 @@ public class GetWallpaper extends AndroidNonvisibleComponent {
         EventDispatcher.dispatchEvent(this, "SavedWallpaper", path);
     }
 }
-
-
-
-
